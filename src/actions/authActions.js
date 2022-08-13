@@ -27,7 +27,7 @@ dispatch => {
 export const loginUser = (userData) => dispatch =>{
     
     axios
-    .post(`${SERVERLINK}/api/users/login`, userData)
+    .post(`https://servicescommunity.herokuapp.com/api/users/login`, userData)
     .then(res =>{
         const {token} = res.data;
         localStorage.setItem('jwtToken', token);
