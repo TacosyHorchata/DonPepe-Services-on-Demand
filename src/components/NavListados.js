@@ -30,7 +30,7 @@ class NavListados extends Component {
 
 fetchCities(){
 
-    fetch(`${SERVERLINK}/api/location/mexicoEstadosYMunicipios`)
+    fetch(`https://servicescommunity.herokuapp.com/api/location/mexicoEstadosYMunicipios`)
     .then(res => res.json())
     .then(data => {
         this.setState({estados:data});
