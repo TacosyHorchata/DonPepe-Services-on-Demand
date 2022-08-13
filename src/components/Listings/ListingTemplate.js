@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel';
 
-
+const SERVERLINK = process.env.SERVERLINK;
 
 
 class ListingTemplate extends Component {
@@ -38,7 +38,7 @@ class ListingTemplate extends Component {
   };
 
   fetchListingInfo= () => {
-    fetch(`/api/listados/${this.props.params.id}/getInfo`)
+    fetch(`${SERVERLINK}/api/listados/${this.props.params.id}/getInfo`)
     .then(res=> res.json())
     .then(data=> {this.setState
       ({...this.state,

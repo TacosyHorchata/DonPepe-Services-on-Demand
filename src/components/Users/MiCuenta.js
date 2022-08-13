@@ -5,6 +5,7 @@ import { filterListings } from '../../actions/listadosActions';
 import {useNavigate} from 'react-router-dom'
 import ListingList from '../Listings/ListingList';
 
+const SERVERLINK = process.env.SERVERLINK;
 
 class MiCuenta extends Component {
     _isMounted = false;
@@ -45,7 +46,7 @@ class MiCuenta extends Component {
 
     fetchStates(){
 
-        fetch('/api/location/mexicoEstadosYMunicipios')
+        fetch(`${SERVERLINK}/api/location/mexicoEstadosYMunicipios`)
         .then(res => res.json())
         .then(data => {
             this.setState({estados:data});
@@ -60,7 +61,7 @@ class MiCuenta extends Component {
 
     fetchUserInfo(){
 
-        fetch(`/api/users/requestInfo/${this.props.auth.user.id}`)
+        fetch(`${SERVERLINK}/api/users/requestInfo/${this.props.auth.user.id}`)
         .then(res => res.json())
         .then(data => {
         this.setState({...this.state, 

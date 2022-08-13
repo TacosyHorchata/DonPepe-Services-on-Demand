@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import { storage } from "../../firebase-config";
 import axios from "axios";
 
+const SERVERLINK = process.env.SERVERLINK;
+
 class PublicarAnuncio extends Component {
   constructor(props) {
     super(props);
@@ -62,7 +64,7 @@ this.saveListing("firebase");
 }*/
 fetchStates(){
 
-  fetch('/api/location/mexicoEstadosYMunicipios')
+  fetch(`${SERVERLINK}/api/location/mexicoEstadosYMunicipios`)
   .then(res => res.json())
   .then(data => {
       this.setState({estados:data});
@@ -77,7 +79,7 @@ fetchStates(){
 
 fetchCategories = () => {
 
-  fetch('/api/listados/data/categorylist')
+  fetch(`${SERVERLINK}/api/listados/data/categorylist`)
   .then(res=>res.json())
   .then(data =>{
     this.setState({categoryList: data})

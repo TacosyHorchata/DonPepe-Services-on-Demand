@@ -8,6 +8,8 @@ import PropTypes from 'prop-types';
 
 import {addListingToFav} from '../../actions/authActions'
 
+const SERVERLINK = process.env.SERVERLINK;
+
 class ListingList extends Component {
     constructor(){
         super();
@@ -36,7 +38,7 @@ class ListingList extends Component {
         console.log({size: numberOfRandomListings, filterListings: filterListings})
 
         if(this.props.size){
-          fetch(`/api/listados/${numberOfRandomListings}/getRandomListing/`)
+          fetch(`${SERVERLINK}/api/listados/${numberOfRandomListings}/getRandomListing/`)
         .then(res => res.json())
         .then(data => {
             this.setState({...this.state, listingsId:data});

@@ -6,6 +6,7 @@ import { fetchListing } from "../../actions/listadosActions";
 
 import ListingList from "../Listings/ListingList";
 
+const SERVERLINK = process.env.SERVERLINK;
 
 class UserProfile extends Component {
   constructor(){
@@ -40,7 +41,7 @@ class UserProfile extends Component {
   };
 
   fetchListingInfo= () => {
-    fetch(`/api/users/${this.props.params.id}/userInfo`)
+    fetch(`${SERVERLINK}/api/users/${this.props.params.id}/userInfo`)
         .then(res => res.json())
         .then(data => {
         this.setState({...this.state, 

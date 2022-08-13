@@ -8,10 +8,12 @@ import {
 import jwt_decode from 'jwt-decode'
 import setAuthToken from '../utils/setAuthToken';
 
+const SERVERLINK = process.env.SERVERLINK;
+
 export const registerUser = (userData, navigate) =>
 dispatch => {
     axios
-    .post('api/users/register', userData)
+    .post(`${SERVERLINK}/api/users/register`, userData)
     .then (res=> navigate('/login')) 
     //re-direct to login on successful register
     .catch(err =>
@@ -25,7 +27,7 @@ dispatch => {
 export const loginUser = (userData) => dispatch =>{
     
     axios
-    .post('api/users/login', userData)
+    .post(`${SERVERLINK}/api/users/login`, userData)
     .then(res =>{
         const {token} = res.data;
         localStorage.setItem('jwtToken', token);
@@ -49,7 +51,7 @@ export const updateUser = (userData) => async dispatch => {
     
 
     try {
-        const response = await axios.post('/api/users/update', userData);
+        const response = await axios.post(`${SERVERLINK}/api/users/update`, userData);
 
         const user = {
             id : response.data._id,
@@ -90,7 +92,7 @@ export const logoutUser = () => dispatch => {
 
 export const reqUserInfo = (userId) => dispatch => {
     axios
-    .get('api/users/requestInfo', userId)
+    .get(`${SERVERLINK}/api/users/requestInfo`, userId)
     .then(res=> {return res})
     .catch(err=> console.log(err))
 };
@@ -98,7 +100,7 @@ export const reqUserInfo = (userId) => dispatch => {
 export const addListingToFav = (data) => async dispatch =>{
 
     try{
-        const response = await axios.post(`/api/users/update/${data.userId}/addtofavorites`, data);
+        const response = await axios.post(`${SERVERLINK}/api/users/update/${data.userId}/addtofavorites`, data);
         dispatch({
           type: SET_FAVORITES_CURRENT_USER,
           payload: response.data.favorites

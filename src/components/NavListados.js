@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import { filterListings } from '../actions/listadosActions';
 import {useNavigate} from 'react-router-dom'
 
+const SERVERLINK = process.env.SERVERLINK;
 
 class NavListados extends Component {
 
@@ -29,7 +30,7 @@ class NavListados extends Component {
 
 fetchCities(){
 
-    fetch('/api/location/mexicoEstadosYMunicipios')
+    fetch(`${SERVERLINK}/api/location/mexicoEstadosYMunicipios`)
     .then(res => res.json())
     .then(data => {
         this.setState({estados:data});
@@ -43,7 +44,7 @@ fetchCities(){
 
 fetchCategories = () => {
 
-  fetch('/api/listados/data/categorylist')
+  fetch(`${SERVERLINK}/api/listados/data/categorylist`)
   .then(res=>res.json())
   .then(data =>{
     this.setState({categoryList: data})

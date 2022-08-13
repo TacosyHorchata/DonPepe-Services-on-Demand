@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import {updateListing} from "../../actions/listadosActions";
 
+const SERVERLINK = process.env.SERVERLINK;
+
 
 class EditListing extends Component {
     constructor(){
@@ -35,7 +37,7 @@ class EditListing extends Component {
     }
 
     fetchListingInfo= () => {
-        fetch(`/api/listados/${this.props.params.listingId}/getInfo`)
+        fetch(`${SERVERLINK}/api/listados/${this.props.params.listingId}/getInfo`)
         .then(res=> res.json())
         .then(data=> {
             console.log({"data":data});
@@ -60,7 +62,7 @@ class EditListing extends Component {
 
     fetchStates(){
 
-        fetch('/api/location/mexicoEstadosYMunicipios')
+        fetch(`${SERVERLINK}/api/location/mexicoEstadosYMunicipios`)
         .then(res => res.json())
         .then(data => {
             this.setState({estados:data});
@@ -75,7 +77,7 @@ class EditListing extends Component {
       
     fetchCategories = () => {
       
-        fetch('/api/listados/data/categorylist')
+        fetch(`${SERVERLINK}/api/listados/data/categorylist`)
         .then(res=>res.json())
         .then(data =>{
           this.setState({categoryList: data})

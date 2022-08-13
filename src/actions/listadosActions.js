@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { FILTER_LISTINGS, GET_ERRORS, SET_CURRENT_USER} from "./types"
 
+const SERVERLINK = process.env.SERVERLINK;
+
 /*export const crearUserListados = (id) => dispatch =>{
     axios
       .post(`api/listados/:${listadoData._id}`, id)
@@ -16,7 +18,7 @@ import { FILTER_LISTINGS, GET_ERRORS, SET_CURRENT_USER} from "./types"
 
 export const publishListing = (listingsData) => dispatch =>{
   axios
-    .put(`api/listados/publicarListado/${listingsData._id}`, listingsData)
+    .put(`${SERVERLINK}/api/listados/publicarListado/${listingsData._id}`, listingsData)
     .then(res=> {
     /*res=> navigate('/confirmacion/publicacionexitosa'*/
         alert("Anuncio publicado con éxito")
@@ -32,7 +34,7 @@ export const publishListing = (listingsData) => dispatch =>{
     
 export const fetchListing = (id) => dispatch =>{
 
-    fetch(`/api/listados/${id}/getListing`)
+    fetch(`${SERVERLINK}/api/listados/${id}/getListing`)
     .then (res =>{
         return res;
     })
@@ -41,7 +43,7 @@ export const fetchListing = (id) => dispatch =>{
 export const filterListings = query => async dispatch =>{
 
     try {
-        const response = await axios.post(`/api/listados/search`, query);
+        const response = await axios.post(`${SERVERLINK}/api/listados/search`, query);
 
         dispatch({
             type: FILTER_LISTINGS,
@@ -64,7 +66,7 @@ export const filterListings = query => async dispatch =>{
 export const updateListing = (listingData) => dispatch => {
 
     axios
-    .put('/api/listados/update', listingData)
+    .put(`${SERVERLINK}/api/listados/update`, listingData)
     .then(res => {
        console.log({res: res})
 
@@ -76,7 +78,7 @@ export const updateListing = (listingData) => dispatch => {
 export const addListingToFav = (data) => {
 
     axios
-    .put(`/api/users/update/${data.id}/addtofavorites`, data)
+    .put(`${SERVERLINK}/api/users/update/${data.id}/addtofavorites`, data)
     .then(data => console.log({respuesta:data}))
     .catch(err=>console.log(err))
 }
