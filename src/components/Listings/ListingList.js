@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 
 import {addListingToFav} from '../../actions/authActions'
 
-const SERVERLINK = process.env.SERVERLINK;
+const SERVERLINK = process.env.REACT_APP_SERVERLINK;
 
 class ListingList extends Component {
     constructor(){

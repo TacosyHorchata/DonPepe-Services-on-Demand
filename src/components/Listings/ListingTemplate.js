@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel';
 
-const SERVERLINK = process.env.SERVERLINK;
+const SERVERLINK = process.env.REACT_APP_SERVERLINK;
 
 
 class ListingTemplate extends Component {

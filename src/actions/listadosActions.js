@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { FILTER_LISTINGS, GET_ERRORS, SET_CURRENT_USER} from "./types"
 
-const SERVERLINK = process.env.SERVERLINK;
+const SERVERLINK = process.env.REACT_APP_SERVERLINK;
 
 /*export const crearUserListados = (id) => dispatch =>{
     axios

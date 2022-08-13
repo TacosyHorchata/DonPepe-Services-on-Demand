@@ -6,7 +6,7 @@ import { fetchListing } from "../../actions/listadosActions";
 
 import ListingList from "../Listings/ListingList";
 
-const SERVERLINK = process.env.SERVERLINK;
+const SERVERLINK = process.env.REACT_APP_SERVERLINK;
 
 class UserProfile extends Component {
   constructor(){

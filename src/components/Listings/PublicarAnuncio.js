@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { storage } from "../../firebase-config";
 import axios from "axios";
 
-const SERVERLINK = process.env.SERVERLINK;
+const SERVERLINK = process.env.REACT_APP_SERVERLINK;
 
 class PublicarAnuncio extends Component {
   constructor(props) {

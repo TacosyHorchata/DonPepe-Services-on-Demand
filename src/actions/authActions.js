@@ -8,7 +8,7 @@ import {
 import jwt_decode from 'jwt-decode'
 import setAuthToken from '../utils/setAuthToken';
 
-const SERVERLINK = process.env.SERVERLINK;
+const SERVERLINK = process.env.REACT_APP_SERVERLINK;
 
 export const registerUser = (userData, navigate) =>
 dispatch => {
@@ -27,7 +27,7 @@ dispatch => {
 export const loginUser = (userData) => dispatch =>{
     
     axios
-    .post(`https://servicescommunity.herokuapp.com/api/users/login`, userData)
+    .post(`${SERVERLINK}api/users/login`, userData)
     .then(res =>{
         const {token} = res.data;
         localStorage.setItem('jwtToken', token);

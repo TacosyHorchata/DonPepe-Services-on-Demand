@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import {updateListing} from "../../actions/listadosActions";
 
-const SERVERLINK = process.env.SERVERLINK;
+const SERVERLINK = process.env.REACT_APP_SERVERLINK;
 
 
 class EditListing extends Component {
