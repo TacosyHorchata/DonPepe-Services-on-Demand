@@ -40,10 +40,11 @@ export const loginUser = (userData) => dispatch =>{
         
     })
     .catch(err =>
-        dispatch({
+        /*dispatch({
             type: GET_ERRORS,
             payload: err.response.data
-        })
+        })*/
+        console.log({err:err})
     );
 };
 
