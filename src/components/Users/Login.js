@@ -50,7 +50,7 @@ const userData = {
       email: this.state.email,
       password: this.state.password
     };
-this.props.loginUser(userData, this.props.navigate);
+this.props.loginUser(userData);
   };
 render() {
     const { errors } = this.state;
