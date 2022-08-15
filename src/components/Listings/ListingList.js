@@ -69,7 +69,7 @@ class ListingList extends Component {
       console.log({mandandoData: data})
 
       this.props.addListingToFav(data)
-      .then(res=> console.log(this.state))
+      .then(res=> alert('Anuncio agregado a favoritos'))
       //esto lo arregla pero cambia el array
       
     }
@@ -126,7 +126,7 @@ class ListingList extends Component {
                     </Link>
                   </div>
                 <div class="col-md-2">
-                  <button type="button" class= "btn btn-primary" onClick={()=>this.addToFav(item._id)}>
+                  <button type="button" class= "btn btn-warning" onClick={()=>this.addToFav(item._id)}>
                   Agregar a favoritos
                   </button>
                 </div>

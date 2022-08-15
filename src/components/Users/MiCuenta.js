@@ -108,9 +108,20 @@ class MiCuenta extends Component {
     return (
       <div class="container-fluid">
       
-        <h1 >Mis datos</h1>
-        <button onClick={this.logOut}>Cerrar Sesión</button>
-        <button onClick={this.goFavoritesPage}>Favoritos</button>
+        <h1>Mi cuenta</h1>
+        <br/>
+        <div class="row">
+            <div class="col-10">
+                <button class="btn btn-warning" onClick={this.goFavoritesPage}>Favoritos</button>
+                <button class="btn mx-5 btn-warning">Mis anuncios </button>
+            </div>
+            <div class="col-2" >
+                <button class="btn btn-danger" onClick={this.logOut}>Cerrar Sesión</button>
+            </div>
+        </div>
+        <br/>
+        <h2>Mis datos</h2>
+
         <form noValidate onSubmit={this.onSubmit}>
                     <label class="form-label">Nombre:</label>
                     <input 

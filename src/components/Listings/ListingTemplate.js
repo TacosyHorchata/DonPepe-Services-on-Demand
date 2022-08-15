@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel';
 
+
 const SERVERLINK = process.env.REACT_APP_SERVERLINK;
 
 
@@ -76,8 +77,8 @@ class ListingTemplate extends Component {
               {this.state.images.map((item,i)=>{
                 return <Carousel.Item interval={5000}>
                     <img
-                      class="d-block w-100 img-fluid"
-                      style={{maxHeight:'70%'}}
+                      class="img-responsive mx-auto d-block"
+                      style={{height:'27em'}}
                       src={`${item}`}
                       alt={`${i} slide`}
                     />
@@ -85,7 +86,7 @@ class ListingTemplate extends Component {
               })}
           </Carousel>
     ): (
-      <img style={{maxHeight:'70%'}} class="d-block w-100 img-fluid" src={`${this.state.images[0]}`}/>
+      <img style={{height:'27em'}} class="img-responsive mx-auto d-block" src={`${this.state.images[0]}`}/>
       )}
 
       <div class="h-25 d-block border-top" name="price" >

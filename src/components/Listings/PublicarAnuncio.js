@@ -5,6 +5,9 @@ import { publishListing } from "../../actions/listadosActions";
 import { useNavigate } from 'react-router-dom';
 import { storage } from "../../firebase-config";
 import axios from "axios";
+import { 
+  LISTINGS_LOADING,
+ } from "../../actions/types"
 
 const SERVERLINK = process.env.REACT_APP_SERVERLINK;
 
@@ -18,12 +21,13 @@ class PublicarAnuncio extends Component {
       category: "",
       firebaseImage: [],
       categoryList:{},
-      chosenCategory:"Hogar",
-      chosenSubCategory:"",
+      chosenCategory:"Categoria",
+      chosenSubCategory:"Subcategoría",
+      contactInfo:"",
       estados:{},
       estadoEscogido: this.props.auth.user.location.stateName,
       ciudadEscogida: this.props.auth.user.location.city,
-      errors: {uploadingImg:false}
+      errors: {uploadingImg:false},
     };
   }
 
@@ -31,7 +35,6 @@ componentDidMount(){
   this.fetchStates();
   this.fetchCategories();
 }
-
 
 onChange = e => {
     this.setState({ [e.target.id]: e.target.value });
@@ -87,6 +90,9 @@ fetchCategories = () => {
 }
 
 saveListing = (method) =>{
+  let loading = true;
+  this.props.setIfLoading(loading);
+
   let imageObj = {};
 
   if(method==="firebase"){
@@ -122,13 +128,16 @@ saveListing = (method) =>{
       };
     
       console.log({listingData:listingData});
-      this.props.publishListing(listingData);
+
+      this.props.publishListing(listingData, this.props.navigate)
+      .then(res=>  this.props.setIfLoading(loading));
     })
     .catch((err) => {
-    alert(err.code);
+    alert(err);
     this.setState({errors:{uploadingImg:true}})
+    this.props.setIfLoading(loading);
     });
-    
+    let loading = false;
   }
 }
 
@@ -138,7 +147,7 @@ return (
       <div className="container-fluid">
       <h1>Publicar Anuncio</h1>
         <div>
-        <form noValidate onSubmit={this.onSubmit}>
+        <form onSubmit={this.onSubmit}>
         
         <div className="input-field col s12">
         <label class="form-label" htmlFor="titulo">Titulo</label>
@@ -149,7 +158,7 @@ return (
             error={errors.title}
             id="title"
             type="text"
-          />
+            required/>
           <span className='red-text'>
             {errors.titulo}
             </span>
@@ -163,7 +172,8 @@ return (
             value={this.state.description}
             error={errors.description}
             id="description"
-            type="text"/>
+            type="text"
+            required/>
           <span className="red-text">
             {errors.descripcion}
           </span>
@@ -177,30 +187,32 @@ return (
             value={this.state.price}
             error={errors.price}
             id="price"
-            type="text"/>
+            type="number"
+            required/>
           <span className="red-text">
             {errors.precio}
           </span>
         </div>
 
         <div className="input-field col s12">
-          <label htmlFor="categoria" class="text-wrap">Por hora, dia, semana, mes, debe poder agregar hasta 5 lapsos</label>
+          <label htmlFor="categoria" class="text-wrap">Contacto(Celular o Email)</label>
           <input
             class="form-control"
             onChange={this.onChange}
-            value={this.state.pricePerTime}
-            error={errors.pricePerTime}
-            id="pricePerTime"
-            type="text"/>
+            value={this.state.contactInfo}
+            error={errors.contactInfo}
+            id="contactInfo"
+            type="text"
+            required/>
           <span className="red-text">
-            {errors.categoria}
+            {errors.contactInfo}
           </span>
         </div>
 
         <div className="input-field col s12">
        
         <label class="form-label" for="category">Categoria:</label>
-            <select class="form-select" id="categoryOption" onChange={(e) => 
+            <select class="form-select" value={this.state.chosenCategory} id="categoryOption" onChange={(e) => 
                 {
                         this.setState({chosenCategory: e.target.value})
                 }}>
@@ -218,11 +230,11 @@ return (
         <div className="input-field col s12">
        
         <label class="form-label" for="subcategory">Subcategoria:</label>
-            <select class="form-select" id="subcategoryOption" onChange={(e) => 
+            <select class="form-select" id="subcategoryOption" value={this.state.chosenSubCategory} onChange={(e) => 
                 {
                         this.setState({chosenSubCategory: e.target.value})
                         console.log({chosenSubcategory: this.state.chosenSubCategory})
-                }}>
+                }} required>
                 {this.state.categoryList[`${this.state.chosenCategory}`]?.map(function(item,i){
                     /*if (this.state.estadoEscogido===item){
                         return <option key={i} selected>{item.stateName}</option>}
@@ -240,7 +252,7 @@ return (
                     {
                             this.setState({estadoEscogido: e.target.value})
                             console.log({estadoEscogido: this.state.estadoEscogido})
-                    }}>
+                    }} required>
                     {Object.keys(this.state.estados).map(function(item,i){
                         /*if (this.state.estadoEscogido===item){
                             return <option key={i} selected>{item.stateName}</option>}
@@ -257,7 +269,7 @@ return (
                 <select class="form-select" value={this.state.ciudadEscogida} name="ciudades" id="ciudadesOption" onChange={(e) => 
                     {
                             this.setState({ciudadEscogida: e.target.value})
-                    }}>
+                    }} required>
                     {this.state.estados[`${this.state.estadoEscogido}`]?.map(function(item,i){
                         /*if (this.state.ciudadEscogida===item.stateName){
                             //esto quiebra porque estamos involucrando al state
@@ -274,7 +286,7 @@ return (
           <label for="img">
             Subir imagenes:
           </label>
-          <input class="form-control" id="imgInput" type="file" multiple/>
+          <input class="form-control" id="imgInput" type="file" multiple required/>
           <div class="row">
           {this.state.firebaseImage?.map((item, i)=>{
             return <div class="col-5 m-2">
@@ -285,12 +297,23 @@ return (
           </div>
         </div>
         <div className="col s12" style={{ paddingLeft: "11.250px" }}>
+        {this.props.listings.loading ? 
+        (
           <button
-            type="submit"
-            className="btn btn-primary m-5"
-          >
-            Publicar
+            className="btn btn-primary m-5" disabled>
+              Publicar
           </button>
+        )
+        :
+        (
+          <button
+          type="submit"
+          className="btn btn-primary m-5">
+            Publicar
+        </button>
+        )
+        }
+          
         </div>
       </form>
         </div>
@@ -320,10 +343,23 @@ const WrapperPublicarAnuncio = props => {
   
   const mapStateToProps = state => ({
     auth: state.auth,
+    listings: state.listings,
     errors: state.errors
   });
+
+  const mapDispatchToProps = (dispatch) => {
+    return ({
+      setIfLoading: (status) => {
+        dispatch({
+          type: LISTINGS_LOADING,
+          payload: status,
+        });
+      },
+      publishListing: (listingsData, navigate) => dispatch(publishListing(listingsData, navigate)),
+    });
+  };
   
   export default connect(
     mapStateToProps,
-    {publishListing}
+    mapDispatchToProps,
   )(WrapperPublicarAnuncio);

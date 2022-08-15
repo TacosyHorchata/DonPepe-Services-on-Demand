@@ -89,19 +89,17 @@ ecommerce desentralizado
 
 Pendientes
 
-Página de producto bootstrap
-Página de editar  bootstrap
-estilo login y register
+// Loading cuando llamando funciones async //
 
-Pagina favoritos eliminar de fav
-url unico/params para busqueda
+// Campos obligatorios //
+Contraseña segura - Validator
 
-Pagination en categorias y busquedas
-Loading
-
+Agregar contacto a los listados
+Aviso de agregado a favoritos
+Arreglar categorias y seleccion por defecto en busqueda
 
 
 
+Arreglar categorias
 
-
-Estado y ciudad en publicar anuncio
+Estilo login y register

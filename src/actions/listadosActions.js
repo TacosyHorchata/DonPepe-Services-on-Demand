@@ -1,5 +1,9 @@
 import axios from 'axios';
-import { FILTER_LISTINGS, GET_ERRORS, SET_CURRENT_USER} from "./types"
+import { 
+    FILTER_LISTINGS, 
+    GET_ERRORS, 
+    LISTINGS_LOADING,
+   } from "./types"
 
 const SERVERLINK = process.env.REACT_APP_SERVERLINK;
 
@@ -16,21 +20,24 @@ const SERVERLINK = process.env.REACT_APP_SERVERLINK;
       );    
   } */
 
-export const publishListing = (listingsData) => dispatch =>{
+export const publishListing = (listingsData, navigate) => async dispatch =>{
   axios
     .put(`${SERVERLINK}/api/listados/publicarListado/${listingsData._id}`, listingsData)
     .then(res=> {
     /*res=> navigate('/confirmacion/publicacionexitosa'*/
+        navigate('/');
         alert("Anuncio publicado con éxito")
-        console.log(res)
+        console.log({resPublishingListing:res})
     }) 
     //re-direct to login on successful register
-    .catch(err =>
+    .catch(err => {
         dispatch({
             type: GET_ERRORS,
             payload: err.response
-        })
-    )};
+        });
+        alert("Error publicando el anuncio, intente de nuevo");
+    });
+};
     
 export const fetchListing = (id) => dispatch =>{
 

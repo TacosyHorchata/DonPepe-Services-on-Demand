@@ -6,6 +6,8 @@ import { loginUser } from "../../actions/authActions";
 import classnames from "classnames";
 import { useNavigate } from 'react-router-dom';
 
+import {GET_ERRORS} from '../../actions/types';
+
 class Login extends Component {
   constructor() {
     super();
@@ -15,6 +17,11 @@ class Login extends Component {
       errors: {}
     };
   }
+
+  componentDidMount(){
+    this.props.resetErrors();
+  } 
+
 
  /* componentDidMount(){
     
@@ -31,6 +38,10 @@ class Login extends Component {
         props.navigate('/')
         
     }
+
+    if (props.errors !== state.errors){
+      return { errors: props.errors }
+    } 
     return (null)
   }
 /*
@@ -46,6 +57,7 @@ onChange = e => {
   };
 onSubmit = e => {
     e.preventDefault();
+    this.props.resetErrors();
 const userData = {
       email: this.state.email,
       password: this.state.password
@@ -62,14 +74,14 @@ return (
         <div style={{ marginTop: "4rem" }} class="row">
           <div class="col-8 offset-s2">
             <Link to="/" class="btn-flat waves-effect">
-              Back to home
+              Regresar al inicio
             </Link>
             <div class="col-12" style={{ paddingLeft: "11.250px" }}>
               <h4>
-                <b>Login</b> below
+                <b>Iniciar Sesión</b> 
               </h4>
               <p class="grey-text text-darken-1">
-                Don't have an account? <Link to="/register">Register</Link>
+               ¿Aún no tienes una cuenta? <Link to="/register">Registrarse</Link>
               </p>
             </div>
             <form noValidate onSubmit={this.onSubmit}>
@@ -77,13 +89,11 @@ return (
                 <input
                   onChange={this.onChange}
                   value={this.state.email}
-                  error={errors.email}
                   id="email"
                   type="email"
-                  class = {classnames('',{invalid: errors.email || errors.emailnotfound})}
-                />
+                required/>
                 <label htmlFor="email">Email</label>
-                <span class='red-text'>
+                <span class='text-danger'>
                   {errors.email}
                   {errors.emailnotfound}
                   </span>
@@ -92,16 +102,11 @@ return (
                 <input
                   onChange={this.onChange}
                   value={this.state.password}
-                  error={errors.password}
                   id="password"
                   type="password"
-                  class={classnames('', {
-                    invalid: errors.password || 
-                    errors.passwordincorrect
-                  })}
-                />
-                <label htmlFor="password">Password</label>
-                <span class="red-text">
+                required/>
+                <label htmlFor="password">Contraseña</label>
+                <span class="text-danger">
                   {errors.password}
                   {errors.passwordincorrect}
                 </span>
@@ -115,9 +120,9 @@ return (
                     marginTop: "1rem"
                   }}
                   type="submit"
-                  class="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                  class="btn btn-primary"
                 >
-                  Login
+                  Iniciar Sesión
                 </button>
               </div>
             </form>
@@ -153,7 +158,20 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
+const mapDispatchToProps = (dispatch) => {
+  return ({
+    resetErrors: () => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: {},
+      });
+    },
+    loginUser: (userData) => dispatch(loginUser(userData)),
+
+  });
+};
+
 export default connect(
   mapStateToProps,
-  {loginUser}
+  mapDispatchToProps
 )(WrapperLogin);

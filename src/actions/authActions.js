@@ -16,11 +16,12 @@ dispatch => {
     .post(`${SERVERLINK}/api/users/register`, userData)
     .then (res=> navigate('/login')) 
     //re-direct to login on successful register
-    .catch(err =>
+    .catch(err =>{
         dispatch({
             type: GET_ERRORS,
-            payload: err.response.date
+            payload: err.response.data
         })
+        }
     );    
 };
 
@@ -40,11 +41,10 @@ export const loginUser = (userData) => dispatch =>{
         
     })
     .catch(err =>
-        /*dispatch({
+        dispatch({
             type: GET_ERRORS,
             payload: err.response.data
-        })*/
-        console.log({err:err})
+        })
     );
 };
 

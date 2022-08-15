@@ -1,6 +1,8 @@
+import { ActivityIndicator } from 'react-native-web';
 import {
     FILTER_LISTINGS,
-    LOADING_LISTINGS
+    LISTINGS_LOADING,
+    LISTINGS_LOADING_COMPLETE
 } from '../actions/types';
 
 const initialState = {
@@ -12,11 +14,13 @@ export default function (state = initialState, action){
     switch(action.type){
         case FILTER_LISTINGS:
             return {
+                ...state,
                 listings: action.payload
             }
-        case LOADING_LISTINGS: 
+        case LISTINGS_LOADING: 
             return{
-                loading: true
+                ...state,
+                loading: action.payload
             }
         default: 
             return state;
