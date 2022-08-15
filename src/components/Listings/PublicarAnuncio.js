@@ -119,6 +119,7 @@ saveListing = (method) =>{
         _id: this.props.auth.user.id, 
         title: this.state.title,
         description: this.state.description,
+        contactInfo: this.state.contactInfo,
         price: this.state.price,
         stateName: this.state.estadoEscogido,
         city: this.state.ciudadEscogida,
