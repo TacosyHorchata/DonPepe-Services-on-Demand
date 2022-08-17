@@ -46,6 +46,7 @@ class ListingTemplate extends Component {
         listingId:data._id,
         title: data.title,
         description: data.description,
+        contactInfo: data.contactInfo,
         price: data.price,
        // img: data.img,
         category: data.category,
@@ -95,12 +96,17 @@ class ListingTemplate extends Component {
 
       <div>
         <div class="h-25 d-block border-top overflow-auto" name="description">
+          <p>Descripción: </p>
           <p>{this.state.description}</p>
           <br/>
           <br/>
           <br/>
-          <br/>
         </div>
+
+        <div class="h-25 d-block border-top overflow-auto" name="contactInfo">
+        <p>Contacto: {this.state.contactInfo}</p>
+        <br/>
+      </div>
 
 
         <div class="h-25 d-block border-top" name="others" >

@@ -45,7 +45,7 @@ componentWillReceiveProps(nextProps) {
   render() {
     return (
       <div className='header container-fluid'>
-      <h4 onClick={this.goToHome} className='header__logo'>Stellar</h4>
+      <h4 onClick={this.goToHome} className='header__logo'>PROERA</h4>
       
       <div className="header__nav"> 
 

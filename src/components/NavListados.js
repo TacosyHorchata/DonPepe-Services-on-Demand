@@ -68,7 +68,7 @@ onSubmit = () => {
 
 onChange = (e) =>{
   this.setState({[e.target.name]:e.target.value})
-  console.log({state: this.state})
+
 }
 
   render() {
