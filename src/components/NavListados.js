@@ -80,7 +80,7 @@ onChange = (e) =>{
            
             <input type="text" 
             name="searchQuery" 
-            placeholder="Diseñador gráfico..."
+            placeholder="Plomero..."
             value={this.state.searchQuery} 
             onChange={this.onChange}
             class="form-control" aria-label="Small" 

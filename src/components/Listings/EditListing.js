@@ -252,7 +252,9 @@ class EditListing extends Component {
                     <button class="btn btn-primary" type="submit">Guardar</button>
                 </div>
             </form>
-            
+                <div>
+                    <button class="btn btn-primary" onClick={()=>alert("Función no disponible, comuniquese con soporte al correo: soporteproera@gmail.com")}>Eliminar Anuncio</button>
+                </div>
         </div>
     )
   }

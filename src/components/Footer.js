@@ -50,7 +50,7 @@ componentWillReceiveProps(nextProps) {
 
       <footer class="container-fluid py-5 my-4 border-top">
       <div class="row">
-            <div class="col-8 text-left">
+           {/* <div class="col-8 text-left">
             <h5>Categorías</h5>
             <div class="row container-fluid">
                 <ul class="col-6 nav flex-column">
@@ -70,14 +70,14 @@ componentWillReceiveProps(nextProps) {
 
 
             </div>
-            </div>
+    </div>*/}
     
             <div class="col-4 col-md-2 mb-3">
                 <h5>Páginas de interés</h5>
                 <ul class="nav flex-column">
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Acerca de Nosotros</a></li>
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Inversionistas</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Contacto</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Contacto: soporteproera@gmail.com</a></li>
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Politica de Privacidad</a></li>
                 </ul>
