@@ -85,27 +85,29 @@ return (
               </p>
             </div>
             <form noValidate onSubmit={this.onSubmit}>
-              <div class="input-field col-12">
+              <div>
+                <label htmlFor="email">Email</label>
                 <input
+                  class="form-control"
                   onChange={this.onChange}
                   value={this.state.email}
                   id="email"
                   type="email"
-                required/>
-                <label htmlFor="email">Email</label>
+                required/>   
                 <span class='text-danger'>
                   {errors.email}
                   {errors.emailnotfound}
                   </span>
               </div>
               <div class="input-field col-12">
+                <label htmlFor="password">Contraseña</label>
                 <input
+                  class="form-control"
                   onChange={this.onChange}
                   value={this.state.password}
                   id="password"
                   type="password"
                 required/>
-                <label htmlFor="password">Contraseña</label>
                 <span class="text-danger">
                   {errors.password}
                   {errors.passwordincorrect}

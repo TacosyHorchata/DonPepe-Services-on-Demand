@@ -71,48 +71,53 @@ class Register extends Component {
                     ¿Ya tienes cuenta? <Link to="/login">Iniciar Sesión</Link>
                 </p>
                 </div>
-                <form noValidate onSubmit={this.onSubmit} >
-                <div className="input-field col s12">
+                <form noValidate onSubmit={this.onSubmit}>
+                <div>
+                    <label htmlFor="name">Nombre</label>
                     <input
+                    class="form-control"
                     onChange={this.onChange}
                     value={this.state.name}
                     name = 'name' 
                     id="name"
                     type="text"
                     required/>
-                    <label htmlFor="name">Nombre</label>
                     <span className="text-danger"> {errors.name}</span>
                 </div>
                 <div className="input-field col s12">
+                    <label htmlFor="email">Email</label>
                     <input
+                    class="form-control"
                     onChange={this.onChange}
                     value={this.state.email}
                     name = 'email'
                     id="email"
                     type="email"
                     required/>
-                    <label htmlFor="email">Email</label>
+                    
                     <span className="text-danger"> {errors.email}</span>
                 </div>
                 <div className="input-field col s12">
+                    <label htmlFor="password">Contraseña</label>
                     <input
+                    class="form-control"
                     onChange={this.onChange}
                     value={this.state.password}
                     name = 'password'
                     id="password"
                     type="password"
                     required/>
-                    <label htmlFor="password">Contraseña</label>
                     <span className="text-danger"> {errors.password}</span>
                 </div>
                 <div className="input-field col s12">
+                    <label htmlFor="password2">Confirmar contraseña</label>
                     <input
+                    class="form-control"
                     onChange={this.onChange}
                     value={this.state.password2}
                     id="password2"
                     type="password"
                     required/>
-                    <label htmlFor="password2">Confirmar contraseña</label>
                     <span class="text-danger"> {errors.password2}</span>
                 </div>
                 <div className="col s12" style={{ paddingLeft: "11.250px" }}>
