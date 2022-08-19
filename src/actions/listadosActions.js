@@ -48,6 +48,7 @@ export const fetchListing = (id) => dispatch =>{
 };
 
 export const filterListings = query => async dispatch =>{
+    console.log({query:query})
 
     try {
         const response = await axios.post(`${SERVERLINK}/api/listados/search`, query);
@@ -56,10 +57,14 @@ export const filterListings = query => async dispatch =>{
             type: FILTER_LISTINGS,
             payload: response.data
         });
-        console.log(response.data);
+        console.log({responseData:response.data});
     }
     catch(err){
         console.log(err, "filterListings api error: ");
+        dispatch({
+            type: FILTER_LISTINGS,
+            payload: []
+        });
         /*dispatch ({type: STOP_LOADING});
         dispatch ({
             type: GET_ERRORS,

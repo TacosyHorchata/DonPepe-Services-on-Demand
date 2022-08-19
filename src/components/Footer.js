@@ -91,7 +91,7 @@ componentWillReceiveProps(nextProps) {
             <div class="d-flex flex-column flex-sm-row w-100 gap-2">
               <label for="newsletter1" class="visually-hidden">Correo Electrónico</label>
               <input id="newsletter1" type="text" class="form-control" placeholder="Correo Electrónico"/>
-              <button class="btn btn-primary" type="button">Subscribe</button>
+              <button class="btn btn-primary" type="button">Subscribirse</button>
             </div>
           </form>
         </div>

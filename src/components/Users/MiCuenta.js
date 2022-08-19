@@ -111,9 +111,8 @@ class MiCuenta extends Component {
         <h1>Mi cuenta</h1>
         <br/>
         <div class="row">
-            <div class="col-10">
+            <div class="col-8">
                 <button class="btn btn-warning" onClick={this.goFavoritesPage}>Favoritos</button>
-                <button class="btn mx-5 btn-warning">Mis anuncios </button>
             </div>
             <div class="col-2" >
                 <button class="btn btn-danger" onClick={this.logOut}>Cerrar Sesión</button>

@@ -87,17 +87,8 @@ class ListingList extends Component {
                     <div class="col-4">
                       <img class="img-fluid img-thumbnail" style={{maxWidth:"100%"}} src={`${item.images[0]}`}/>
                     </div>
-                    <div class="col-2">
-                      <h4 class="text-dark">Título</h4>
-                      <p class="text-dark">{item.title}</p>
-                    </div>
-                    <div class="col-4">
-                      <h4 class="text-dark">Descripción</h4>
-                      <p class="text-body">{item.description}</p>
-                    </div>
-                    <div class="col-2">
-                      <h4 class="text-dark">Precio</h4>
-                      <p class="text-dark">${item.price}</p>
+                    <div class="col-8">
+                      <h5 class="text-dark">{item.title}</h5>
                     </div>
                   </div>
                 </Link>
