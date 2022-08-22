@@ -58,6 +58,8 @@ export const updateUser = (userData) => async dispatch => {
             id : response.data._id,
             name: response.data.name,
             email: response.data.email,
+            aboutMe: response.data.aboutMe,
+            contact: response.data.contact,
             listings: response.data.listings,
             location: {
                 stateName: response.data.location.stateName,

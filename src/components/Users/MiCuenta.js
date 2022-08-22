@@ -16,7 +16,8 @@ class MiCuenta extends Component {
         this.state = {
             estados: {},
             name:"",
-            email:"", 
+            email:"",
+            aboutMe:"", 
             estadoEscogido: this.props.auth.user.location.stateName,
             ciudadEscogida: this.props.auth.user.location.city
         };
@@ -93,6 +94,8 @@ class MiCuenta extends Component {
         id: this.props.auth.user.id,
         name: this.state.name,
         email: this.state.email,
+        aboutMe: this.state.aboutMe,
+        contact: this.state.contact,
         stateName: this.state.estadoEscogido,
         city: this.state.ciudadEscogida
     }
@@ -122,11 +125,14 @@ class MiCuenta extends Component {
         <h2>Mis datos</h2>
 
         <form noValidate onSubmit={this.onSubmit}>
-                    <label class="form-label">Nombre:</label>
-                    <input 
-                    class="form-control"
-                    id='name' defaultValue={this.props.auth.user.name} 
-                    onChange= {this.onChange}/>
+            <div>
+                <label class="form-label">Nombre:</label>
+                <input 
+                class="form-control"
+                id='name' defaultValue={this.props.auth.user.name} 
+                onChange= {this.onChange}/>
+            </div>
+
             <div>
                 <label class="form-label">Email:</label>
                 <input 
@@ -134,6 +140,24 @@ class MiCuenta extends Component {
                 id='email' defaultValue={this.props.auth.user.email}  
                 onChange={this.onChange}
                 disabled/>
+            </div>
+
+            <div>
+                <label class="form-label">Contacto:</label>{/*falta checkbox*/}
+                <input 
+                class="form-control"
+                id='contact' defaultValue={this.props.auth.user.contact}  
+                onChange={this.onChange}
+                />
+            </div>
+
+            <div>
+                <label class="form-label">Acerca de mi:</label>
+                <textarea 
+                class="form-control"
+                id='aboutMe' defaultValue={this.props.auth.user.aboutMe}  
+                onChange={this.onChange}
+                />
             </div>
 
             <div>

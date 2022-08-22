@@ -29,6 +29,7 @@ import FilterCategory from './Listings/FilterCategory';
 import EditListing from './Listings/EditListing';
 import Footer from './Footer';
 import FilterFavoriteListings from './Listings/FilterFavoriteListings';
+import PublicProfile from './Users/PublicProfile';
 
 
 
@@ -99,7 +100,7 @@ function App() {
                 <Route 
                 path="/user/:id/profile" 
                 element ={
-                    <UserProfile/>
+                    <PublicProfile/>
                 }/>
               <Route 
                 path="/login" 

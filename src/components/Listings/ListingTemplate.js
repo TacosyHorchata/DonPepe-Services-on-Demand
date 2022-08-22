@@ -102,6 +102,11 @@ class ListingTemplate extends Component {
           <br/>
           <br/>
         </div>
+      
+        <div class="h-25 d-block border-top overflow-auto" name="description">
+          <p>Ubicación: </p>
+          <p>{this.state.city}{'>>'}{this.state.stateName}</p>
+        </div>
 
         <div class="h-25 d-block border-top overflow-auto" name="contactInfo">
         <p>Contacto: {this.state.contactInfo}</p>
