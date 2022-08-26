@@ -112,7 +112,10 @@ return (
                   {errors.password}
                   {errors.passwordincorrect}
                 </span>
+              <Link to="/auth/forgot_password">Olvide mi contraseña</Link>
               </div>
+
+
               <div class="col-12" style={{ paddingLeft: "11.250px" }}>
                 <button
                   style={{

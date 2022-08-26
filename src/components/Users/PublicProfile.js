@@ -15,6 +15,8 @@ class UserProfile extends Component {
       this.state={
         username: "",
         name: "",
+        aboutMe:"",
+        contact:"",
         location: {
           stateName: "",
           city: "",
@@ -59,7 +61,9 @@ class UserProfile extends Component {
           this.setState({...this.state, 
               name:data.name,
               userInfo:{description:data.userInfo.description} ,
-              email:data.email, 
+              email:data.email,
+              aboutMe:data.aboutMe,
+              contact: data.contact,  
               location:{
                 stateName:data.location.stateName,
                 city: data.location.city
@@ -91,13 +95,15 @@ class UserProfile extends Component {
                                 <div class="media-body mb-5 text-white">
                                     <h4 class="mt-0 mb-0">{this.state.name}</h4>
                                     <p class="small mb-4"> {this.state.location.city + ", " + this.state.location.stateName}</p>
-                                    <p class="small mb-4"> Acerca de mi:</p>
+                                    <p class="small mb-4"> Acerca de mi: <br/></p>
+                                    <p class="small mb-4"> {this.state.aboutMe}</p>
                                 </div>
                             </div>
                         </div>
             
                         <div class="bg-light p-4 d-flex text-center">
                             <h5>Contacto:</h5>
+                            <p class="small mb-4"> {this.state.contact}</p>
                         </div>
             
                         <div class="py-4 px-4">

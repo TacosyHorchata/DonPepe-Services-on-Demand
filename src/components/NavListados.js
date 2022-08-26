@@ -86,14 +86,6 @@ onChange = (e) =>{
             class="form-control" aria-label="Small" 
             aria-describedby="inputGroup-sizing-sm"/>
 
-            <button type="button"
-            class="btn btn-primary"
-            onClick={this.onSubmit}
-            >
-            Buscar
-            <i class=""></i>
-            </button>
-
           </div>
         <div class="row">
           <div class="col-6">
@@ -170,7 +162,18 @@ onChange = (e) =>{
                       })}
                   </select>
               </div>
-            </div>   
+              
+            </div> 
+            <div> 
+              <button 
+              type="button"
+              class="btn btn-primary col-12"
+              onClick={this.onSubmit}
+              >
+              Buscar
+              <i class=""></i>
+              </button>
+            </div>
           </div>
         </div>
       </div>

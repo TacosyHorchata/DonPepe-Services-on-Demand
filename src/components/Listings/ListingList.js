@@ -61,16 +61,21 @@ class ListingList extends Component {
     }
 
     addToFav = (itemId) => {
-      const data = {
-        userId : this.props.auth.user.id,
-        listingId: itemId,
-        favoritesArray: this.props.auth.user.favorites
+      if(this.props.auth.isAuthenticated){
+        const data = {
+          userId : this.props.auth.user.id,
+          listingId: itemId,
+          favoritesArray: this.props.auth.user.favorites
+        }
+        console.log({mandandoData: data})
+  
+        this.props.addListingToFav(data)
+        .then(res=> alert('Anuncio agregado a favoritos'))
+        //esto lo arregla pero cambia el array
+        
+      }else {
+        alert('Inicia sesión para agregar a tus favoritos');
       }
-      console.log({mandandoData: data})
-
-      this.props.addListingToFav(data)
-      .then(res=> alert('Anuncio agregado a favoritos'))
-      //esto lo arregla pero cambia el array
       
     }
 

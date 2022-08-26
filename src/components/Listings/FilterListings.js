@@ -17,12 +17,27 @@ class FilterListings extends Component {
   }
 
   render() {
+    const {listings} = this.props.listings
     return (
       <div>
-      
-      <h1>BUSCADOR</h1>
+      <br/>
+      <h1 class="text-center">BUSCADOR</h1>
       <NavListados/>
-      <ListingList filteredListings={this.props.listings.listings}/>
+      {listings.length>0 ?
+        (<ListingList filteredListings={listings}/>)
+        :
+        (<div>
+          
+          <h3 class="text-danger text-center">No existen coincidencias</h3>
+          <br/>
+          <p class="text-danger text-center">Intente con otros términos de busqueda, deje en blanco la categoría o la ubicación.</p>
+          <br/>
+          <br/>
+          <br/>
+         </div> 
+        )
+      }
+      
     
       </div>
     )

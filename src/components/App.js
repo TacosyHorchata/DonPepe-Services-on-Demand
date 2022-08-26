@@ -30,6 +30,8 @@ import EditListing from './Listings/EditListing';
 import Footer from './Footer';
 import FilterFavoriteListings from './Listings/FilterFavoriteListings';
 import PublicProfile from './Users/PublicProfile';
+import ForgotPassword from './Users/ForgotPassword';
+import ResetPassword from './Users/ResetPassword';
 
 
 
@@ -115,6 +117,22 @@ function App() {
                 element={
                   <PublicRoute>
                     <Register/>
+                  </PublicRoute>
+                }
+              />
+              <Route 
+                path="/auth/forgot_password" 
+                element={
+                  <PublicRoute>
+                    <ForgotPassword/>
+                  </PublicRoute>
+                }
+              />
+              <Route 
+                path="/auth/reset_password" 
+                element={
+                  <PublicRoute>
+                    <ResetPassword/>
                   </PublicRoute>
                 }
               />

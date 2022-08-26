@@ -18,6 +18,7 @@ class MiCuenta extends Component {
             name:"",
             email:"",
             aboutMe:"", 
+            contact:"",
             estadoEscogido: this.props.auth.user.location.stateName,
             ciudadEscogida: this.props.auth.user.location.city
         };
@@ -67,7 +68,9 @@ class MiCuenta extends Component {
         .then(data => {
         this.setState({...this.state, 
             name:this.props.auth.user.name,
-            email:this.props.auth.user.email, 
+            email:this.props.auth.user.email,
+            aboutMe: this.props.auth.user.aboutMe,
+            contact: this.props.auth.user.contact,
             estadoEscogido: this.props.auth.user.location.stateName,
             ciudadEscogida: this.props.auth.user.location.city
             });
@@ -97,7 +100,7 @@ class MiCuenta extends Component {
         aboutMe: this.state.aboutMe,
         contact: this.state.contact,
         stateName: this.state.estadoEscogido,
-        city: this.state.ciudadEscogida
+        city: (this.state.ciudadEscogida=="Ciudad") ? "" : this.state.ciudadEscogida
     }
     this.props.updateUser(userData);
     };
@@ -114,8 +117,12 @@ class MiCuenta extends Component {
         <h1>Mi cuenta</h1>
         <br/>
         <div class="row">
-            <div class="col-8">
+            <div class="col-4">
                 <button class="btn btn-warning" onClick={this.goFavoritesPage}>Favoritos</button>
+            </div>
+            <div class="col-4">
+                <button class="btn btn-warning" onClick={()=>this.props.navigate(`/user/${this.props.auth.user.id}/profile`)}>Perfil Público</button>
+                
             </div>
             <div class="col-2" >
                 <button class="btn btn-danger" onClick={this.logOut}>Cerrar Sesión</button>
