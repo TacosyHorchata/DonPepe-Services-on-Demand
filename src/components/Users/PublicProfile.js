@@ -91,7 +91,9 @@ class UserProfile extends Component {
                         <div class="p-4 bg-dark">
                             <div class="media align-items-end profile-header">
                                 <div class="profile mr-3">
-                                    <img src="https://bootstrapious.com/i/snippets/sn-profile/teacher.jpg" alt="..." width="130" class="rounded mb-2 img-thumbnail"/></div>
+                                    {/*<img src="https://bootstrapious.com/i/snippets/sn-profile/teacher.jpg" alt="..." width="130" class="rounded mb-2 img-thumbnail"/>
+                                  */}
+                                    </div>
                                 <div class="media-body mb-5 text-white">
                                     <h4 class="mt-0 mb-0">{this.state.name}</h4>
                                     <p class="small mb-4"> {this.state.location.city + ", " + this.state.location.stateName}</p>
@@ -117,7 +119,7 @@ class UserProfile extends Component {
                             }
                                 
                             </div>
-                            <div class="py-4">
+                            {/*<div class="py-4">
                                 <h5 class="mb-3">Reseñas</h5>
                                 <div class="p-4 bg-light rounded shadow-sm">
                                     <p class="font-italic mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
@@ -126,7 +128,7 @@ class UserProfile extends Component {
                                         <li class="list-inline-item"><i class="fa fa-heart-o mr-2"></i>200 Likes</li>
                                     </ul>
                                 </div>
-                            </div>
+                          </div>*/}
                         </div>
                     </div>
             
