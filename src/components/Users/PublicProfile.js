@@ -105,7 +105,7 @@ class UserProfile extends Component {
             
                         <div class="bg-light p-4 d-flex text-center">
                             <h5>Contacto:</h5>
-                            <p class="small mb-4"> {this.state.contact}</p>
+                            <p> {this.state.contact}</p>
                         </div>
             
                         <div class="py-4 px-4">
